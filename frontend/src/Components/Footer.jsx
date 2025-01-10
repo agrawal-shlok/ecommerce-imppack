@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import { assets } from '../assets/assets'
 
 const Footer = () => {
@@ -14,19 +15,21 @@ const Footer = () => {
 
             <div >
                 <p className='text-xl font-medium mb-5'>COMPANY</p>
-                    <ul className='flex flex-col gap-1 text-gray-600'>
-                        <li>HOME</li>
-                        <li>ABOUT US</li>
-                        <li>DELIVERY</li>
-                        <li>PRIVACY POLICY</li>
-                    </ul>
+                <ul className='flex flex-col gap-1 text-gray-600'>
+            <li><Link to="/">HOME</Link></li>
+            <li><Link to="/about">ABOUT US</Link></li>
+            <li><Link to="/delivery">DELIVERY</Link></li>
+            <li><Link to="/privacypolicy">PRIVACY POLICY</Link></li>
+            <li><Link to="/terms-and-conditions">TERMS & CONDITIONS</Link></li>
+            <li><Link to="/cancellationandrefundpolicy">CANCELLATION/REFUND POLICIES</Link></li>
+          </ul>
             </div>
 
             <div>
                 <p className='text-xl font-medium mb-5'>GET IN TOUCH</p>
                 <ul className='flex flex-col gap-1 text-gray-600'>
                     <li>+91- 83404 32838</li>
-                    <li>imppack.support@gmail.com</li>
+                    <li>imppacksbp@gmail.com</li>
                 </ul>
             </div>
         </div>

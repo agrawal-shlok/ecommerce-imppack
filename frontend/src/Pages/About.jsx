@@ -27,15 +27,15 @@ const About = () => {
         <div className='flex flex-col md:flex-row text-sm mb-20'>
           <div  className='border px-10 md:px-16 py-8 sm:py-20 flex flex-col gap-5'>
               <b>Corrugated Packaging Supports Preservation:</b>
-              <p className='text-gray-600'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod ullam, recusandae mollitia architecto, voluptas sunt corporis nam quis quia ea omnis exercitationem rerum impedit vero, tempore beatae minus illum hic?</p>
+              <p className='text-gray-600'>Shipping damages can cost businesses thousands of dollars, but corrugated packaging offers a reliable solution. Its durable design protects products from rough handling and transit challenges, ensuring they arrive in perfect condition.Used across industries, corrugated materials safeguard items while reducing the risk of loss or damage. This not only prevents financial setbacks but also builds trust with your customers.By delivering products safely and on time, corrugated packaging boosts sales and strengthens your brand’s reputation. Protect your goods—and your bottom line—with corrugated packaging.</p>
           </div>
           <div className='border px-10 md:px-16 py-8 sm:py-20 flex flex-col gap-5'>
               <b>Preservation of Comestibles:</b>
-              <p className='text-gray-600'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod ullam, recusandae mollitia architecto, voluptas sunt corporis nam quis quia ea omnis exercitationem rerum impedit vero, tempore beatae minus illum hic?</p>
+              <p className='text-gray-600'>Corrugated cardboard is gaining popularity for shipping produce due to its ability to preserve freshness, aroma, appearance, and taste better than plastic. It extends shelf life by keeping external moisture out, preventing spoilage during long shipments.This benefits the entire supply chain, reducing food waste and boosting sales. Additionally, studies show that corrugated packaging positively influences consumer purchasing behavior, making it an attractive option for grocery stores.</p>
           </div>
           <div className='border px-10 md:px-16 py-8 sm:py-20 flex flex-col gap-5'>
               <b>Preservation of Consumer Products:</b>
-              <p className='text-gray-600'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod ullam, recusandae mollitia architecto, voluptas sunt corporis nam quis quia ea omnis exercitationem rerum impedit vero, tempore beatae minus illum hic?</p>
+              <p className='text-gray-600'>Corrugated cardboard packaging ensures products are shipped safely with added padding and customizable designs. Its flexibility allows companies to tailor packaging to fit specific products, providing better protection and care during transit.</p>
           </div>
           
         </div>

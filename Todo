@@ -1,0 +1,17 @@
+migrate cloudinary to local storage
+setup local database(mongo)
+docker compose setup
+
+
+
+buy server plan
+https://www.bigrock.in/self-managed-vps-hosting?gad_source=1&gclid=CjwKCAiAp4O8BhAkEiwAqv2UqL-v1B-4akya2LSAwbRtTVw_Qz3WwAf1RzGuexe6MOxBSTa-kmKeYBoCTAUQAvD_BwE#plans
+
+NVMe 6
+2 Cores	6 GB	60 GB	3 TB	
+₹1029/mo
+
+ubuntu 22.04
+self managed
+billing panel and control panel none
+backup none

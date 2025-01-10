@@ -14,6 +14,11 @@ import Footer from './Components/Footer'
 import Searchbar from './Components/Searchbar'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import TermsAndConditions from './Pages/Termsandconditions'
+import PrivacyPolicy from './Pages/Privacypolicy'
+import CancellationRefundPolicy from './Pages/Cancellationandrefundpolicy'
+import ShippingDeliveryPolicy from './Pages/Delivery'
+import PricingDetails from './Pages/Pricing'
 
 const App = () => {
   return (
@@ -32,6 +37,11 @@ const App = () => {
           <Route path='/login' element={<Login/>}/>
           <Route path='/placeorder' element={<Placeorder/>}/>
           <Route path='/orders' element={<Orders/>}/>
+          <Route path="/terms-and-conditions" element={<TermsAndConditions/>} />
+          <Route path="/privacypolicy" element={<PrivacyPolicy/>} />
+          <Route path="/cancellationandrefundpolicy" element={<CancellationRefundPolicy/>} />
+          <Route path="/delivery" element={<ShippingDeliveryPolicy/>} />
+          <Route path="/pricing" element={<PricingDetails/>} />
         </Routes>
         <Footer/>
       </div>

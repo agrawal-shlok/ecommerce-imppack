@@ -1,0 +1,16 @@
+running docker compose
+---------- ---------------------------------------------------------------------------
+docker compose up --build
+--------------------
+docker compose down --volumes
+
+
+
+--------------------------------
+docker file parts             --
+--------------------------------
+
+base img - which opersting system we want to create image
+processing-   ready the image(file installation and processing)
+end game/ final command - actual commnad run
+

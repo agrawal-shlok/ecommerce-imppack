@@ -13,7 +13,7 @@ const Contact = () => {
         <div className='flex flex-col justify-center items-start gap-6'>
           <p className='font-semibold text-xl text-gray-600'>Our Store</p>
           <p className='text-gray-500'>D-14,IDCO INDUSTRIAL ESTATE BARAIPALI, <br />SAMBALPUR ORISSA</p>
-          <p className='text-gray-500'>Tel: +91-8340432838 <br /> Email: support@gmail.com</p>
+          <p className='text-gray-500'>Tel: +91-8340432838 <br /> Email: imppacksbp@gmail.com</p>
         </div>
       </div>
       {/* <Newsletterbox/> */}

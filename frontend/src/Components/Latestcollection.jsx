@@ -16,7 +16,7 @@ const Latestcollection = () => {
         <div className='text-center py-8 text-3xl'>
             <Title text1 = {'LATEST'} text2 = {'COLLECTION'}/>
             <p className='w-3/4 m-auto text-xs sm:text-sm md:text-base text-gray-600'>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae temporibus nulla qui, delectus neque ex vero quos cum sit. Doloremque, quas nihil? Aspernatur maxime velit possimus voluptates culpa quisquam praesentium?
+            "Introducing our latest collection of boxes—designed with precision, crafted for durability, and tailored to meet your packaging needs. Discover the perfect fit for every purpose today!"
             </p>
         </div>
         {/* rendering producrs */}
