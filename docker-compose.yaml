@@ -8,7 +8,7 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: example
-
+      MONGO_INITDB_DATABASE: ecommerce
 
   mongo-express:
 
@@ -21,10 +21,13 @@ services:
       ME_CONFIG_MONGODB_ADMINPASSWORD: example
       ME_CONFIG_MONGODB_URL: mongodb://root:example@mongo:27017/
       ME_CONFIG_BASICAUTH: false
+    depends_on:
+      - mongo
 
 
   backend:
     image: imppack/backend:0.0.1
+    # command: /bin/sh -c "while :; do sleep 1; done"
     build: Backend/
     volumes:
       - ./backend-data:/backend/uploads/
@@ -32,3 +35,6 @@ services:
       - 10001:4000
     environment:
       MONGODB_URI: mongodb://root:example@mongo:27017/
+    depends_on:
+      - mongo
+

@@ -5,7 +5,7 @@ WORKDIR /backend
 
 COPY . .
 
-RUN npm i
+RUN npm i && npm i nodemon -g
 
 
 CMD nodemon server

@@ -44,7 +44,7 @@ const Product = () => {
             ))}
           </div>
           <div className="w-full sm:w-[80%]">
-            <img src={image} alt="" className="w-full h-auto" />
+            <img src={image} alt="" className="w-full h-auto max-w-full" />
           </div>
         </div>
 
@@ -64,7 +64,7 @@ const Product = () => {
             {productdata.price}
           </p>
           <p className="mt-5 text-gray-500 md:w-4/5">
-            {productdata.description}
+            {productdata.description} {/* Updated description */}
           </p>
           <div className="flex flex-col gap-4 my-8">
             <p>Select Size</p>
@@ -82,42 +82,45 @@ const Product = () => {
               ))}
             </div>
           </div>
-          <button onClick={() => addtocart({ itemid: productdata._id, size })}
- className="bg-black text-white px-8 py-3 text-sm active:bg-gray-700">
-            ADD TO CART
+          <button
+            onClick={() =>
+              addtocart({ itemid: productdata._id, size, quantity: 50 })
+            }
+            className="bg-black text-white px-8 py-3 text-sm active:bg-gray-700"
+          >
+            ADD TO CART 
           </button>
+          <b className="ml-4 text-gray-500">+50</b>
+
           <hr className="mt-8 sm:w-4/5" />
           <div className="text-sm text-gray-500 mt-5 flex flex-col gap-1">
             <p>100% Orignal Product</p>
             <p>Cash on delivery is available on this product</p>
+            <b> for bulk order price is negotiable</b>
+            <b>contact: +91- 83404 32838</b>
+            <b>Email: imppacksbp@gmail.com</b>
             <p></p>
           </div>
         </div>
       </div>
-      {/* -------DESCRIPTION & REVIEW SECTION */}
+
+      {/* -------DESCRIPTION SECTION */}
       <div className="mt-20">
         <div className="flex ">
           <b className="border px-5 py-3 text-sm">DESCRIPTION</b>
-          <p className="border px-5 py-3 text-sm">REVIEWS (122)</p>
         </div>
 
         <div className="flex flex-col gap-4 border px-6 py-6 text-sm text-gray-500">
-          <p>
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-            Voluptatem, aspernatur fugit deleniti rerum quidem totam qui quod
-            quasi optio quos accusantium tempora, eius cum dolore quae ipsam
-            perspiciatis sint doloremque!
-          </p>
-          <p>
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolorem
-            quis vel accusantium et maxime, culpa non sequi laborum vitae?
-            Facere et consequuntur debitis eveniet inventore deleniti nemo,
-            recusandae obcaecati est!
-          </p>
+          <p>{productdata.description}</p>{" "}
+          {/* Dynamically loaded description */}
         </div>
       </div>
+
       {/* DISPLAY RELATED PRODUCTS */}
-      <Relatedproducts category={productdata.category} subcategory={productdata.subcategory}/>
+      <Relatedproducts
+        category={productdata.category}
+        subcategory={productdata.subcategory}
+      />
     </div>
   ) : (
     <div className="opacity-0"></div>
