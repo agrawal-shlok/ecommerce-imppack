@@ -1,6 +1,6 @@
-migrate cloudinary to local storage
-setup local database(mongo)
-docker compose setup
+[ ] migrate cloudinary to local storage
+[X] setup local database(mongo)
+[X] docker compose setup
 
 
 

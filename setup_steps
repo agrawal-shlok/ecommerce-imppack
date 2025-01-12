@@ -1,0 +1,35 @@
+commands:
+===========================================================================================
+running docker compose                      : docker compose up --build
+stopping docker compose                     : docker compose down
+stopping docker compose + delete database   : docker compose down --volumes
+
+
+docker file parts
+===========================================================================================
+base img - which opersting system we want to create image
+processing-   ready the image(file installation and processing)
+end game/ final command - actual commnad run
+
+
+steps to build:
+===========================================================================================
+mandatory steps:
+1. run build_all.sh
+2. docker compose up --build
+
+optional steps:
+3. docker push imppack/backend:<version>
+4. docker push imppack/admin:<version>
+5. docker push imppack/frontend:<version>
+
+
+steps to deploy:
+===========================================================================================
+optional steps:
+1. docker pull imppack/backend:<version>
+2. docker pull imppack/admin:<version>
+3. docker pull imppack/frontend:<version>
+
+mandatory steps:
+4. docker compose up
