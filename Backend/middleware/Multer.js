@@ -1,12 +1,42 @@
-import multer from "multer"
+import multer from "multer";
+import path from "path";
+import fs from "fs";
 
+// Ensure the uploads directory exists
+const uploadsDirectory = path.resolve("uploads");
+if (!fs.existsSync(uploadsDirectory)) {
+    fs.mkdirSync(uploadsDirectory);
+}
+
+// Multer storage configuration
 const storage = multer.diskStorage({
-    filename:function(req,file,callback){
-        callback(null,file.originalname)
-    }
-})
+    destination: function (req, file, callback) {
+        // Set the upload destination to the uploads directory
+        callback(null, uploadsDirectory);
+    },
+    filename: function (req, file, callback) {
+        // Ensure unique filenames by appending a timestamp
+        const uniqueName = `${Date.now()}-${file.originalname}`;
+        callback(null, uniqueName);
+    },
+});
 
-
-const upload = multer({storage})
+// Multer configuration with file size and format validation (optional)
+const upload = multer({
+    storage,
+    limits: {
+        fileSize: 5 * 1024 * 1024, // Limit file size to 5MB
+    },
+    fileFilter: function (req, file, callback) {
+        const fileTypes = /jpeg|jpg|png/;
+        const extName = fileTypes.test(path.extname(file.originalname).toLowerCase());
+        const mimeType = fileTypes.test(file.mimetype);
+        if (extName && mimeType) {
+            callback(null, true);
+        } else {
+            callback(new Error("Only images are allowed (jpeg, jpg, png)"));
+        }
+    },
+});
 
 export default upload;

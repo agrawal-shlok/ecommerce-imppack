@@ -1,86 +1,102 @@
-import { v2 as cloudinary } from "cloudinary";
+import fs from "fs";
+import path from "path";
 import productmodel from "../models/Productmodel.js";
 
-//function for add product
+// Function for adding a product
 const addproduct = async (req, res) => {
-    try {
-        const { name, description, price, category, subcategory, sizes, bestseller, weight } = req.body; // Added weight
+  try {
+    const { name, description, price, category, sizes, bestseller, weight } = req.body;
 
-        const images = [];
+    const images = [];
 
-        if (req.files.image) {
-            for (let index = 0; index < req.files.image.length; index++) {
-                const element = req.files.image[index];
-                if (element === undefined) continue;
-                images.push(element);
-            }
+    // Handling the uploaded images
+    if (req.files && req.files.image) {
+      for (let index = 0; index < req.files.image.length; index++) {
+        const element = req.files.image[index];
+        if (element) {
+          images.push(element);
         }
-
-        let imagesurl = await Promise.all(
-            images.map(async (item) => {
-                let result = await cloudinary.uploader.upload(item.path, { resource_type: "image" });
-                return result.secure_url;
-            })
-        );
-
-        const productdata = {
-            name,
-            description,
-            price: Number(price),
-            image: imagesurl,
-            category,
-            // Parse the subcategory and sizes if they are stringified arrays
-            subcategory: JSON.parse(subcategory), // Ensure it's an array after parsing
-            sizes: JSON.parse(sizes), // Parse sizes as an array
-            bestseller: bestseller === 'true', // Simplified boolean conversion
-            weight: Number(weight), // Convert weight to a number
-            date: Date.now(),
-        };
-        
-
-        const product = new productmodel(productdata);
-        await product.save();
-
-        res.json({ success: true, message: "Product added" });
-
-    } catch (error) {
-        console.log(error);
-        res.json({ success: false, message: error.message });
+      }
     }
+
+    // Get image URLs (local file paths)
+    let imagesurl = images.map(item => {
+      const imagePath = `/uploads/products/${item.filename}`; // Path to the saved file
+      return imagePath;
+    });
+
+    // Prepare the product data
+    const productdata = {
+      name,
+      description,
+      price: Number(price),
+      image: imagesurl, // Save the relative image paths in the database
+      category,
+      sizes: JSON.parse(sizes), // Parse sizes as an array
+      bestseller: bestseller === 'true', // Convert bestseller to boolean
+      weight: Number(weight), // Convert weight to a number
+      date: Date.now(),
+    };
+
+    // Create a new product instance
+    const product = new productmodel(productdata);
+    await product.save();
+
+    res.json({ success: true, message: "Product added successfully", product });
+  } catch (error) {
+    console.log(error);
+    res.json({ success: false, message: error.message });
+  }
 };
 
-//function for list product
+// Function for listing products
 const listproduct = async (req, res) => {
-    try {
-        const products = await productmodel.find({});
-        res.json({ success: true, products });
-    } catch (error) {
-        console.log(error);
-        res.json({ success: false, message: error.message });
-    }
+  try {
+    const products = await productmodel.find({});
+    res.json({ success: true, products });
+  } catch (error) {
+    console.log(error);
+    res.json({ success: false, message: error.message });
+  }
 };
 
-//function for remove product
+// Function for removing a product
 const removeproduct = async (req, res) => {
-    try {
-        await productmodel.findByIdAndDelete(req.body.id);
-        res.json({ success: true, message: "Product removed" });
-    } catch (error) {
-        console.log(error);
-        res.json({ success: false, message: error.message });
+  try {
+    const product = await productmodel.findByIdAndDelete(req.body.id);
+    if (!product) {
+      return res.json({ success: false, message: "Product not found" });
     }
+
+    // Optionally delete the images from the server
+    product.image.forEach((image) => {
+      const imagePath = path.join(__dirname, `../public${image}`);
+      fs.unlink(imagePath, (err) => {
+        if (err) console.error(`Error deleting file: ${err}`);
+      });
+    });
+
+    res.json({ success: true, message: "Product removed successfully" });
+  } catch (error) {
+    console.log(error);
+    res.json({ success: false, message: error.message });
+  }
 };
 
-//function for single product info
+// Function for getting a single product
 const singleproduct = async (req, res) => {
-    try {
-        const { productid } = req.body;
-        const product = await productmodel.findById(productid);
-        res.json({ success: true, product });
-    } catch (error) {
-        console.log(error);
-        res.json({ success: false, message: error.message });
+  try {
+    const { productid } = req.body;
+    const product = await productmodel.findById(productid);
+    if (!product) {
+      return res.json({ success: false, message: "Product not found" });
     }
+
+    res.json({ success: true, product });
+  } catch (error) {
+    console.log(error);
+    res.json({ success: false, message: error.message });
+  }
 };
 
 export { listproduct, addproduct, removeproduct, singleproduct };

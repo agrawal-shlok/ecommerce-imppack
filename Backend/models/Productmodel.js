@@ -21,10 +21,10 @@ const productschema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    subcategory: {
-        type: [String],  // Changed to an array of strings for multiple subcategories
-        required: true,
-    },
+    // subcategory: {
+    //     type: [String],  // Changed to an array of strings for multiple subcategories
+    //     required: true,
+    // },
     sizes: {
         type: [String],  // Array of size strings, for example: ["kg", "halfkg"]
         required: true,

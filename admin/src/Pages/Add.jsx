@@ -14,7 +14,7 @@ const Add = ({ token }) => {
     const [description, setDescription] = useState('');
     const [price, setPrice] = useState('');
     const [category, setCategory] = useState('Bakery Box');
-    const [subcategory, setSubcategory] = useState(['1 Kg']);
+    // const [subcategory, setSubcategory] = useState(['1 Kg']);
     const [bestseller, setBestseller] = useState(false);
     const [weight, setWeight] = useState('');
     const [sizes, setSizes] = useState([]);
@@ -37,7 +37,7 @@ const Add = ({ token }) => {
             formData.append('description', description);
             formData.append('price', price);
             formData.append('category', category);
-            formData.append('subcategory', JSON.stringify(subcategory));
+            // formData.append('subcategory', JSON.stringify(subcategory));
             formData.append('bestseller', bestseller);
             formData.append('sizes', JSON.stringify(sizes));
             formData.append('weight', weight);
@@ -142,7 +142,7 @@ const Add = ({ token }) => {
                     </select>
                 </div>
 
-                <div className="w-full sm:w-[200px]">
+                {/* <div className="w-full sm:w-[200px]">
                     <p className="mb-2">Sub Category</p>
                     <select
                         multiple
@@ -154,7 +154,7 @@ const Add = ({ token }) => {
                         <option value="1/2 Kg">1/2 Kg</option>
                         <option value="250 gm">250 gm</option>
                     </select>
-                </div>
+                </div> */}
 
                 <div className="w-full sm:w-[200px]">
                     <p className="mb-2">Product Price</p>
