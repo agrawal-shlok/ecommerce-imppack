@@ -6,6 +6,6 @@ WORKDIR /backend
 
 COPY . .
 
-RUN npm i && npm i nodemon -g
+RUN rm -rf node_modules && npm i && npm i nodemon -g
 
 CMD nodemon server

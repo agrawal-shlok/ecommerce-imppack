@@ -5,6 +5,8 @@ import axios from "axios";
 
 export const Shopcontext = createContext();
 
+console.log(process.env);
+
 const Shopcontextprovider = (props) => {
   const currency = "₹";
   const backendurl = import.meta.env.VITE_BACKEND_URL;
@@ -61,7 +63,7 @@ const Shopcontextprovider = (props) => {
           if (cartitems[items][item] > 0) {
             totalcount += cartitems[items][item];
           }
-        } catch (error) {}
+        } catch (error) { }
       }
     }
     return totalcount;
@@ -96,7 +98,7 @@ const Shopcontextprovider = (props) => {
           if (cartitems[items][item] > 0) {
             totalamount += iteminfo.price * cartitems[items][item];
           }
-        } catch (error) {}
+        } catch (error) { }
       }
     }
     return totalamount;
@@ -114,7 +116,7 @@ const Shopcontextprovider = (props) => {
             // Multiply the item's weight by the quantity in the cart and convert to kg
             totalWeightKg += iteminfo.weight * cartitems[items][item] / 1000;
           }
-        } catch (error) {}
+        } catch (error) { }
       }
     }
 

@@ -5,35 +5,30 @@ import productmodel from "../models/Productmodel.js";
 // Function for adding a product
 const addproduct = async (req, res) => {
   try {
-    const { name, description, price, category, sizes, bestseller, weight } = req.body;
+    const { name, description, price, category, sizes, bestseller, weight } =
+      req.body;
 
-    const images = [];
+    const imagesURLs = [];
 
-    // Handling the uploaded images
-    if (req.files && req.files.image) {
-      for (let index = 0; index < req.files.image.length; index++) {
-        const element = req.files.image[index];
-        if (element) {
-          images.push(element);
-        }
-      }
+    if(req.files){
+      req.files.map((file) => {
+        imagesURLs.push({
+          originalName: file.originalname,
+          fileName: file.filename,
+          url: `${req.protocol}://${req.get("host")}/uploads/${file.filename}`, // Construct public URL
+        });
+      });
     }
-
-    // Get image URLs (local file paths)
-    let imagesurl = images.map(item => {
-      const imagePath = `/uploads/products/${item.filename}`; // Path to the saved file
-      return imagePath;
-    });
 
     // Prepare the product data
     const productdata = {
       name,
       description,
       price: Number(price),
-      image: imagesurl, // Save the relative image paths in the database
+      image: imagesURLs, // Save the relative image paths in the database
       category,
       sizes: JSON.parse(sizes), // Parse sizes as an array
-      bestseller: bestseller === 'true', // Convert bestseller to boolean
+      bestseller: bestseller === "true", // Convert bestseller to boolean
       weight: Number(weight), // Convert weight to a number
       date: Date.now(),
     };

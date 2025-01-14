@@ -7,6 +7,11 @@ import productrouter from './routes/Productroute.js';
 import cartrouter from './routes/Cartroute.js';
 import orderrouter from './routes/Orderroute.js';
 import path from 'path';
+import { fileURLToPath } from "url";
+
+// Define __dirname for ES modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 dotenv.config();
 
@@ -18,9 +23,9 @@ connectdb()
 // Middlewares
 app.use(express.json())
 app.use(cors())
+app.use(express.urlencoded({ extended: true }));
 
-// Serve static files for images from the 'public/uploads/products' directory
-app.use('/uploads/products', express.static(path.join(__dirname, 'public', 'uploads', 'products')));
+app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 // API endpoints
 app.use('/api/user', userrouter)

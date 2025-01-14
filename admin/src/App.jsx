@@ -10,6 +10,7 @@ import { ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export const backendurl = import.meta.env.VITE_BACKEND_URL
+console.log(backendurl);
 export const currency = '₹';
 
 const App = () => {

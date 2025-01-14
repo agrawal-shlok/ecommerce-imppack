@@ -1,6 +1,7 @@
 import multer from "multer";
 import path from "path";
 import fs from "fs";
+import { v4 as uuid4 } from "uuid";
 
 // Ensure the uploads directory exists
 const uploadsDirectory = path.resolve("uploads");
@@ -15,9 +16,10 @@ const storage = multer.diskStorage({
         callback(null, uploadsDirectory);
     },
     filename: function (req, file, callback) {
-        // Ensure unique filenames by appending a timestamp
-        const uniqueName = `${Date.now()}-${file.originalname}`;
-        callback(null, uniqueName);
+      const fileId = `${uuid4()}`;
+      const extension = path.extname(file.originalname); // Retain the original file extension
+      const uniqueName = `${fileId}.${extension}`;
+      callback(null, uniqueName);
     },
 });
 
