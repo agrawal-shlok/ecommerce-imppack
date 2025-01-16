@@ -1,6 +1,8 @@
+import dotenv from 'dotenv';
+dotenv.config();
+
 import express from 'express'
 import cors from 'cors'
-import dotenv from 'dotenv';
 import connectdb from './config/Mongodb.js';
 import userrouter from './routes/Userroutes.js';
 import productrouter from './routes/Productroute.js';
@@ -13,7 +15,8 @@ import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-dotenv.config();
+
+// console.log(process.env);
 
 // App config
 const app = express()

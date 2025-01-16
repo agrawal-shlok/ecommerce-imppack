@@ -1,3 +1,11 @@
+
+try {
+  console.log(import.meta.env);
+} catch (error) {
+  console.log(error);
+}
+
+
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import App from './App.jsx'

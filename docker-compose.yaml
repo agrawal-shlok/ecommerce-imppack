@@ -21,40 +21,40 @@ services:
     depends_on:
       - mongo
 
-  # backend:
-  #   image: imppack/backend:0.0.1
-  #   # command: /bin/sh -c "while :; do sleep 1; done"
-  #   build: backend/
-  #   volumes:
-  #   #   - ./backend-data:/backend/uploads/
-  #     - ./backend:/backend
-  #   ports:
-  #     - 10001:4000
-  #   env_file:
-  #     - .env
-  #   depends_on:
-  #     - mongo
+  backend:
+    image: imppack/backend:0.0.1
+    # command: /bin/sh -c "while :; do sleep 1; done"
+    build: backend/
+    # volumes:
+    #   - ./backend-data:/backend/uploads/
+    #   - ./backend:/backend
+    ports:
+      - 10001:4000
+    env_file:
+      - .env
+    depends_on:
+      - mongo
 
-  # admin:
-  #   image: imppack/admin:0.0.1
-  #   build: admin/
-  #   ports:
-  #     - 10002:80
-  #   env_file:
-  #     - .env
-  #   depends_on:
-  #     - backend
-  #     - mongo
+  admin:
+    image: imppack/admin:0.0.1
+    build: admin/
+    ports:
+      - 10002:80
+    env_file:
+      - .env
+    depends_on:
+      - backend
+      - mongo
 
-  # frontend:
-  #   image: imppack/frontend:0.0.1
-  #   build: frontend/
-  #   ports:
-  #     - 10003:80
-  #   env_file:
-  #     - .env
-  #   depends_on:
-  #     - admin
-  #     - backend
-  #     - mongo
+  frontend:
+    image: imppack/frontend:0.0.1
+    build: frontend/
+    ports:
+      - 10003:80
+    env_file:
+      - .env
+    depends_on:
+      - admin
+      - backend
+      - mongo
 
