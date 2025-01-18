@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { backendurl } from "../App";
 import { toast } from "react-toastify";
 
-
+// console.log(import.meta.env)
 
 const Login = ({setToken}) => {
   const [email, setEmail] = useState("");
@@ -12,7 +12,7 @@ const Login = ({setToken}) => {
   const onsubmithandler = async (e) => {
     try {
       e.preventDefault();
-      const response = await axios.post(backendurl+'/api/user/admin',{email,password})
+      const response = await axios.post(import.meta.env.VITE_BACKEND_URL +'/api/user/admin',{email,password})
       if(response.data.success){
             setToken(response.data.token)
       }

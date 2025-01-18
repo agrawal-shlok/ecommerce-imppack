@@ -3,7 +3,7 @@ services:
   mongo:
     image: mongo:7.0.16
     volumes:
-    #   - ./mongo-db:/data/db
+      #   - ./mongo-db:/data/db
       - ./mongo-init/init-ecommerce.js:/docker-entrypoint-initdb.d/init-ecommerce.js
     ports:
       - 20001:27017
@@ -39,7 +39,7 @@ services:
     image: imppack/admin:0.0.1
     build: admin/
     ports:
-      - 10002:80
+      - 10002:5174
     env_file:
       - .env
     depends_on:
@@ -50,7 +50,7 @@ services:
     image: imppack/frontend:0.0.1
     build: frontend/
     ports:
-      - 10003:80
+      - 10003:5173
     env_file:
       - .env
     depends_on:
@@ -58,3 +58,14 @@ services:
       - backend
       - mongo
 
+  # nginx:
+  #   image: nginx:latest
+  #   volumes:
+  #     - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+  #     - ./nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf
+  #   ports:
+  #     - 8000:80
+  #   depends_on:
+  #     - admin
+  #     - backend
+  #     - frontend

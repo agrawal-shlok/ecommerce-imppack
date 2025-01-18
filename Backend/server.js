@@ -16,7 +16,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 
-// console.log(process.env);
+console.log(process.env);
 
 // App config
 const app = express()
