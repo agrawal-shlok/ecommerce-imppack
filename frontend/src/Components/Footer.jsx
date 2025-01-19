@@ -9,8 +9,7 @@ const Footer = () => {
             <div>
                 <img src={assets.company_logo} className='mb-5 w-32' alt="" />
                 <p className='w-full md:w-2/3 text-gray-600'>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure nihil consequatur veniam omnis enim sunt laboriosam debitis, nostrum, possimus quas, ut temporibus culpa labore incidunt provident eaque asperiores harum esse.
-                </p>
+                Welcome to Imppack, where innovation meets excellence in packaging solutions! Based in Sambalpur, Odisha, we are a dynamic startup dedicated to manufacturing premium-quality boxes tailored to meet diverse needs across industries                </p>
             </div>
 
             <div >

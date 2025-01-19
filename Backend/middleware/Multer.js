@@ -36,9 +36,10 @@ const upload = multer({
         if (extName && mimeType) {
             callback(null, true);
         } else {
-            callback(new Error("Only images are allowed (jpeg, jpg, png)"));
+            callback(new Error("Only image are allowed (jpeg, jpg, png)"));
         }
     },
 });
+
 
 export default upload;

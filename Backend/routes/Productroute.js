@@ -10,13 +10,14 @@ import adminauth from "../middleware/Adminauth.js";  // Middleware to check if a
 
 const productrouter = express.Router();
 
-// Route for adding a product (with images)
+// Route for adding a product (with image)
 productrouter.post(
   "/add",
   adminauth,
-  upload.fields([{ name: "image", maxCount: 10 }]),  // Allow multiple images (10 in this case)
+  upload.array("image", 10), // 'image' is the field name in the form, allowing up to 10 files
   addproduct
 );
+
 
 // Route for removing a product
 productrouter.post("/remove", adminauth, removeproduct);

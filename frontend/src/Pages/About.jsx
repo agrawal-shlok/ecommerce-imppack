@@ -13,10 +13,12 @@ const About = () => {
       <div className='my-10 flex flex-col md:flex-row gap-16'>
         <img className='w-full md:max-w-[450px]' src={assets.about_img} alt="" />
         <div className='flex flex-col justify-center gap-6 md:w-2/4 text-gray-600'>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eaque est cupiditate nisi, culpa mollitia omnis aut quae quo eveniet corrupti assumenda dolorem, labore ut! Ratione quaerat quia cupiditate in eum.</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab, accusantium, incidunt fuga vel neque praesentium molestiae sint fugit minus dolorem eligendi excepturi nam itaque perspiciatis beatae magnam quos voluptate eum!</p>
-            <b className='text-gray-800'>Our Mission</b>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magnam dolorum alias ab pariatur, eveniet ipsum enim doloribus quod deserunt laudantium voluptatibus necessitatibus dignissimos veniam reiciendis eos qui earum mollitia assumenda.</p>
+            <p>Welcome to Imppack, where innovation meets excellence in packaging solutions! Based in Sambalpur, Odisha, we are a dynamic startup dedicated to manufacturing premium-quality boxes tailored to meet diverse needs across industries.</p>
+            <p>At Imppack, we blend advanced technology with meticulous craftsmanship to deliver durable, eco-friendly, and customizable packaging options that stand out for their quality and reliability. Whether it’s for retail, shipping, or specialized requirements, our boxes are designed to ensure safety and aesthetic appeal for your products.</p>
+            <p>As a young and passionate team, we are driven by a commitment to customer satisfaction, continuous improvement, and sustainable practices. Our vision is to redefine packaging by setting new benchmarks in quality and innovation, catering to businesses of all sizes with solutions that truly make an impact.</p>
+            <p>Join us in creating a future where every package delivers more than just a product—it delivers trust. Choose Imppack, your partner in premium packaging!</p>
+            {/* <b className='text-gray-800'>Our Mission</b> */}
+            {/* <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magnam dolorum alias ab pariatur, eveniet ipsum enim doloribus quod deserunt laudantium voluptatibus necessitatibus dignissimos veniam reiciendis eos qui earum mollitia assumenda.</p> */}
         </div>
 
       </div>
