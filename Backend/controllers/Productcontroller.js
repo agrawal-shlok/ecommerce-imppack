@@ -18,7 +18,7 @@ export const addproduct = async (req, res) => {
     // Map over the uploaded files and generate an array of image URLs
     const imageUrls = req.files.map(file => {
       // Assuming the image are stored in the "uploads" folder, adjust the base URL if necessary
-      return `http://localhost:10001/uploads/${file.filename}`;
+      return file.filename;
     });
 
     // Create a new product document with the provided data

@@ -33,3 +33,11 @@ optional steps:
 
 mandatory steps:
 4. docker compose up
+
+
+clear all images/ containers permanently [DANGER]
+===========================================================================================
+docker system prune -af
+
+
+https://medium.com/@mustafaburakaydiin/how-to-backup-and-restore-a-mongodb-database-in-a-docker-container-a7242ba0994f

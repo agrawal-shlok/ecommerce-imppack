@@ -3,7 +3,7 @@ services:
   mongo:
     image: mongo:7.0.16
     volumes:
-      #   - ./mongo-db:/data/db
+      - ./mongo-backup/:/dump/
       - ./mongo-init/init-ecommerce.js:/docker-entrypoint-initdb.d/init-ecommerce.js
     ports:
       - 20001:27017
@@ -25,8 +25,8 @@ services:
     image: imppack/backend:0.0.1
     # command: /bin/sh -c "while :; do sleep 1; done"
     build: backend/
-    # volumes:
-    #   - ./backend-data:/backend/uploads/
+    volumes:
+      - ./backend-data:/backend/uploads/
     #   - ./backend:/backend
     ports:
       - 10001:4000

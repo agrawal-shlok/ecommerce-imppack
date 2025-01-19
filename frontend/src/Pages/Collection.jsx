@@ -5,6 +5,7 @@ import Title from '../Components/Title';
 import Productitem from '../Components/Productitem';
 
 const Collection = () => {
+  const backendurl = import.meta.env.VITE_BACKEND_URL;
   const { products, search, showsearch } = useContext(Shopcontext);
   const [showfilter, setShowfilter] = useState(false);
   const [filterproducts, setFilterproducts] = useState([]);

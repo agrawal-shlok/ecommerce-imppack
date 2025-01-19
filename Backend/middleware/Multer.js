@@ -18,7 +18,7 @@ const storage = multer.diskStorage({
     filename: function (req, file, callback) {
       const fileId = `${uuid4()}`;
       const extension = path.extname(file.originalname); // Retain the original file extension
-      const uniqueName = `${fileId}.${extension}`;
+      const uniqueName = `${fileId}${extension}`;
       callback(null, uniqueName);
     },
 });

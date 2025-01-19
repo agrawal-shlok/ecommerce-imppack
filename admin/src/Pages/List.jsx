@@ -66,7 +66,7 @@ const List = ({ token }) => {
             key={index}
             className="grid grid-cols-[1fr_3fr_1fr_1fr_1fr] md:grid-cols-[1fr_3fr_1fr_1fr_1fr_1fr] items-center gap-2 py-1 px-2 border text-sm"
           >
-            <img src={item.image[0]} className="w-12" alt="" />
+            <img src={`${backendurl}/uploads/${item.image[0]}`} className="w-12" alt="" />
             <p>{item.name}</p>
             <p>{item.category}</p>
             <p>{currency}{item.price}</p>

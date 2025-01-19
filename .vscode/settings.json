@@ -6,6 +6,8 @@
     "ecommerce",
     "imppack",
     "INITDB",
+    "mongodump",
+    "mongorestore",
     "VITE"
   ]
 }

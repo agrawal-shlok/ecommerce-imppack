@@ -5,6 +5,7 @@ import { assets } from "../assets/assets";
 import Relatedproducts from "../Components/Relatedproducts";
 
 const Product = () => {
+  const backendurl = import.meta.env.VITE_BACKEND_URL;
   const { productid } = useParams();
 
   const { products, currency, addtocart } = useContext(Shopcontext);
@@ -36,7 +37,7 @@ const Product = () => {
             {productdata.image.map((item, index) => (
               <img
                 onClick={() => setImage(item)}
-                src={item}
+                src={`${backendurl}/uploads/${item}`}
                 key={index}
                 className="w-[24%] sm:w-full sm:mb-3 flex-shrink-0 cursor-pointer"
                 alt=""
@@ -44,7 +45,7 @@ const Product = () => {
             ))}
           </div>
           <div className="w-full sm:w-[80%]">
-            <img src={image} alt="" className="w-full h-auto max-w-full" />
+            <img src={`${backendurl}/uploads/${image}`} alt="" className="w-full h-auto max-w-full" />
           </div>
         </div>
 

@@ -5,6 +5,7 @@ import { assets } from '../assets/assets';
 import Carttotal from '../Components/Carttotal';
 
 const Cart = () => {
+  const backendurl = import.meta.env.VITE_BACKEND_URL;
   const { products, currency, cartitems, updatequantity, navigate } = useContext(Shopcontext);
   const [cartdata, setCartdata] = useState([]);
 
@@ -68,7 +69,7 @@ const Cart = () => {
             return (
               <div key={index} className='py-4 border-t border-b text-gray-700 grid grid-cols-[4fr_0.5fr_0.5fr] sm:grid-cols-[4fr_2fr_0.5fr] items-center gap-4'>
                 <div className='flex items-start gap-6'>
-                  <img src={productdata.image[0]} className='w-16 sm:w-20' alt="" />
+                  <img src={`${backendurl}/uploads/${productdata.image[0]}`} className='w-16 sm:w-20' alt="" />
 
                   <div>
                     <p className='text-xs sm:text-lg font-medium'>{productdata.name}</p>
