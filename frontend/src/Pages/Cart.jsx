@@ -52,7 +52,7 @@ const Cart = () => {
     if (checkCartQuantity()) {
       navigate('/placeorder'); // Proceed to checkout if validation passes
     } else {
-      alert("Please make sure all items in your cart have a quantity of at least 50.");
+      alert("Please make sure all items in your cart have a quantity of at least 100.");
     }
   };
 
@@ -84,7 +84,7 @@ const Cart = () => {
                 <input
                   onChange={(e) => handleQuantityChange(item._id, item.size, e.target.value)}
                   type="number"
-                  min={100} // Ensure the minimum quantity is 50
+                  min={100} // Ensure the minimum quantity is 100
                   step={50} // Set step to 50
                   defaultValue={item.quantity}
                   className='border max-w-10 sm:max-w-20 px-1 sm:px-2 py-1'

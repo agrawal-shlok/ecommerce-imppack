@@ -88,22 +88,22 @@ const Shopcontextprovider = (props) => {
   };
 
   const getcartamount = () => {
-    let totalamount = 0;
+    let amount = 0;
     for (const items in cartitems) {
       let iteminfo = products.find((product) => product._id === items);
       for (const item in cartitems[items]) {
         try {
           if (cartitems[items][item] > 0) {
-            totalamount += iteminfo.price * cartitems[items][item];
+            amount += iteminfo.price * cartitems[items][item];
           }
         } catch (error) { }
       }
     }
-    return totalamount;
+    return amount;
   };
 
   // Update this function to calculate the shipping fee based on each product's weight
-  const calculateShippingFee = () => {
+  const delivery_fee = () => {
     let totalWeightKg = 0;
 
     for (const items in cartitems) {
@@ -167,7 +167,7 @@ const Shopcontextprovider = (props) => {
   const value = {
     products,
     currency,
-    calculateShippingFee, // Add the new shipping fee calculation
+    delivery_fee, // Add the new shipping fee calculation
     search,
     setSearch,
     setShowsearch,

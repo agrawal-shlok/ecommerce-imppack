@@ -11,7 +11,7 @@ def print(*args):
 
 
 commands = [
-    "zip -r backend-data.zip backend-data/",
+    # "zip -r backend-data.zip backend-data/",
     "docker compose exec mongo mongodump --username root --password example  --authenticationDatabase admin --db ecommerce --archive=./dump/ecommerce.dump",
     # "docker compose exec mongo mongorestore --username root --password example  --authenticationDatabase admin --nsInclude='ecommerce.*' --archive=./dump/ecommerce.dump", # restore
 ]

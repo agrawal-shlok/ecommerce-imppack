@@ -80,22 +80,30 @@ const Placeorder = () => {
                 }
             }
 
+            console.log("Cart Amount:", getcartamount()); // Validate cart amount calculation
+            console.log("Delivery Fee:", delivery_fee()); 
+
             let orderdata = {
                 address: formdata,
                 items: orderitems,
-                amount: getcartamount() + delivery_fee
+                amount: getcartamount() + delivery_fee()
             }
             
             switch(method){
                 // api calls for cod order
                 case 'cod' : 
                     const response = await axios.post(backendurl + '/api/order/place',orderdata,{headers:{token}})
+                    console.log(response);
                     
                     
                     if (response.data.success) {
                         setCartitems({})
                         navigate('/orders')
                     } else{
+                        
+                        console.log(response.data);
+                        
+                        
                         toast.error(response.data.message)
                     }
                 break;
@@ -107,6 +115,8 @@ const Placeorder = () => {
                 case 'razorpay':
 
                 const responserazorpay = await axios.post(backendurl + '/api/order/razorpay', orderdata,{headers:{token}})
+                console.log(responserazorpay);
+                
                 if(responserazorpay.data.success){
                     initpay(responserazorpay.data.order);
                     

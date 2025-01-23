@@ -19,6 +19,8 @@ const razorpayinstance = new razorpay({
 const placeorder = async (req, res) => {
   try {
     const { userid, items, amount, address } = req.body;
+    console.log(req.body);
+    
 
     const orderdata = {
       userid,
@@ -95,6 +97,8 @@ const verifyrazorpay = async (req, res) => {
       res.json({ success: false, message: "payment failed" });
     }
   } catch (error) {
+    console.log(req.body);
+    
     console.log(error);
     res.json({ success: false, message: error.message });
   }
