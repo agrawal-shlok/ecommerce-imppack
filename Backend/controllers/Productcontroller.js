@@ -1,6 +1,8 @@
 import fs from "fs";
 import path from "path";
 import productmodel from "../models/Productmodel.js";
+import __dirname from '../Dirname.js';
+
 
 // Function to add a product
 export const addproduct = async (req, res) => {
@@ -10,13 +12,16 @@ export const addproduct = async (req, res) => {
   try {
     // Ensure image are uploaded
     if (!req.files || req.files.length === 0) {
-      return res.status(400).json({ success: false, message: "No image uploaded" });
+      return res
+        .status(400)
+        .json({ success: false, message: "No image uploaded" });
     }
 
-    const { name, description, price, category, bestseller, sizes, weight } = req.body;
+    const { name, description, price, category, bestseller, sizes, weight } =
+      req.body;
 
     // Map over the uploaded files and generate an array of image URLs
-    const imageUrls = req.files.map(file => {
+    const imageUrls = req.files.map((file) => {
       // Assuming the image are stored in the "uploads" folder, adjust the base URL if necessary
       return file.filename;
     });
@@ -71,9 +76,14 @@ export const removeproduct = async (req, res) => {
       return res.json({ success: false, message: "Product not found" });
     }
 
-    // Optionally delete the image from the server
+    //Optionally delete the image from the server
     product.image.forEach((image) => {
-      const imagePath = path.join(__dirname, `../uploads/${image.split('/').pop()}`); // Adjust the path if needed
+      const imagePath = path.join(
+        __dirname,
+        `../uploads/${image.split("/").pop()}`
+      ); // Adjust the path if needed
+      
+      
       fs.unlink(imagePath, (err) => {
         if (err) console.error(`Error deleting file: ${err}`);
       });

@@ -3,6 +3,7 @@ import { assets } from "../assets/assets";
 import axios from "axios";
 import { backendurl } from "../App";
 import { toast } from "react-toastify";
+import Titleadmin from "../Components/Title";
 
 const Add = ({ token }) => {
   const [image, setimage] = useState([]); // Array for storing selected image
@@ -71,6 +72,7 @@ const Add = ({ token }) => {
 
   return (
     <form onSubmit={onsubmithandler} className="flex flex-col w-full items-start gap-3">
+      <Titleadmin text1={'ADD'} text2={'PRODUCTS'}/>
       <div>
         <p className="mb-2">Upload image</p>
         <div className="flex gap-2 flex-wrap">

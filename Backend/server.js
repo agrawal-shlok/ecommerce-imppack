@@ -9,11 +9,13 @@ import productrouter from './routes/Productroute.js';
 import cartrouter from './routes/Cartroute.js';
 import orderrouter from './routes/Orderroute.js';
 import path from 'path';
+import __dirname from './Dirname.js';
 import { fileURLToPath } from "url";
 
-// Define __dirname for ES modules
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+// // Define __dirname for ES modules
+// const __filename = fileURLToPath(import.meta.url);
+// const __dirname = path.dirname(__filename);
+
 
 
 console.log(process.env);
