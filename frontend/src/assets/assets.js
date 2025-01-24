@@ -76,6 +76,7 @@ import cross_icon from './cross_icon.png'
 import company_logo from './company-logo.jpeg'
 import fastandreliable from './fastandreliable.png'
 import premium from './premium.png'
+import clogo from './Logo_Impression Impack_page-0001.jpg'
 export const assets = {
     logo,
     hero_img,
@@ -97,7 +98,8 @@ export const assets = {
     cross_icon,
     company_logo,
     fastandreliable,
-    premium
+    premium,
+    clogo
 }
 
 export const products = [
