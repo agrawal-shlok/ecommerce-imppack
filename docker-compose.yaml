@@ -21,51 +21,41 @@ services:
     depends_on:
       - mongo
 
-  backend:
-    image: imppack/backend:0.0.1
-    # command: /bin/sh -c "while :; do sleep 1; done"
-    build: backend/
-    volumes:
-      - ./backend-data:/backend/uploads/
-    #   - ./backend:/backend
-    ports:
-      - 10001:4000
-    env_file:
-      - .env
-    depends_on:
-      - mongo
-
-  admin:
-    image: imppack/admin:0.0.1
-    build: admin/
-    ports:
-      - 10002:5174
-    env_file:
-      - .env
-    depends_on:
-      - backend
-      - mongo
-
-  frontend:
-    image: imppack/frontend:0.0.1
-    build: frontend/
-    ports:
-      - 10003:5173
-    env_file:
-      - .env
-    depends_on:
-      - admin
-      - backend
-      - mongo
-
-  # nginx:
-  #   image: nginx:latest
+  # backend:
+  #   image: imppack/backend:0.0.3
+  #   # command: /bin/sh -c "while :; do sleep 1; done"
+  #   build: backend/
   #   volumes:
-  #     - ./nginx/nginx.conf:/etc/nginx/nginx.conf
-  #     - ./nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf
+  #     - ./backend-data:/backend/uploads/
+  #   #   - ./backend:/backend
   #   ports:
-  #     - 8000:80
+  #     - 10001:4000
+  #   env_file:
+  #     - .env
+  #   depends_on:
+  #     - mongo
+
+  # admin:
+  #   image: imppack/admin:0.0.3
+  #   build: admin/
+  #   ports:
+  #     - 10002:5174
+  #   env_file:
+  #     - .env
+  #   depends_on:
+  #     - backend
+  #     - mongo
+
+  # frontend:
+  #   image: imppack/frontend:0.0.3
+  #   build: frontend/
+  #   ports:
+  #     - 10003:5173
+  #   env_file:
+  #     - .env
   #   depends_on:
   #     - admin
   #     - backend
-  #     - frontend
+  #     - mongo
+
+ 

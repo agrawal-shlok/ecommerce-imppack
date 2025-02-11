@@ -2,6 +2,8 @@ import { createContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const Shopcontext = createContext();
 
@@ -38,7 +40,7 @@ const Shopcontextprovider = (props) => {
     }
 
     setCartitems(cartdata);
-
+    // toast.success("product added successfully");
     if (token) {
       try {
         await axios.post(
@@ -46,6 +48,8 @@ const Shopcontextprovider = (props) => {
           { itemid, size, quantity: quantityToAdd }, // Pass quantity here
           { headers: { token } }
         );
+        toast.success("product added successfully");
+
       } catch (error) {
         console.log(error);
         toast.error(error.message);

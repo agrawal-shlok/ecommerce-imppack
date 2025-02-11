@@ -21,8 +21,7 @@ const ShippingDeliveryPolicy = () => {
 
           <li className="mb-4">
             <b>Shipping Charges:</b> <br />
-            Shipping charges are calculated based on the weight and dimensions of the product, 
-            as well as the delivery location. You will see the exact shipping cost at checkout before placing your order.
+            The shipping fee for your order is calculated based on the total weight of the products you’ve selected. Each product has a weight per unit, and when you select the quantity, we multiply the weight of that product by the quantity to get the total weight. The total weight is then multiplied by a rate of ₹45 per kilogram to calculate the final shipping cost. This ensures that the shipping fee is accurately determined based on the total weight of the items in your cart.
           </li>
 
           <li className="mb-4">

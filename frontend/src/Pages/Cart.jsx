@@ -32,28 +32,26 @@ const Cart = () => {
     if (value === '' || value === '0') {
       updatequantity(itemId, size, 0); // Set to 0 if value is empty or 0
     } else {
-      const newQuantity = Math.max(0, Math.floor(Number(value) / 50) * 50); // Ensure it increments by 50
+      let newQuantity = Math.floor(Number(value) / 50) * 50; // Ensure it increments by 50
+      newQuantity = Math.max(100, newQuantity); // Ensure it doesn't go below 100
       updatequantity(itemId, size, newQuantity); // Update the quantity
     }
   };
 
-  // Check if all items in the cart have a quantity of at least 50
-  const checkCartQuantity = () => {
-    for (const item of cartdata) {
-      if (item.quantity < 100) {
-        return false; // If any item has less than 50 quantity, return false
-      }
-    }
-    return true; // All items have at least 50 quantity
+  // Function to check if any product's quantity is less than 100
+  const isQuantityLessThan100 = (quantity) => {
+    return quantity < 100;
   };
 
-  // Proceed to checkout only if all items have a quantity of at least 50
+  // Proceed to checkout only if all items have a quantity of at least 100
   const handleCheckout = () => {
-    if (checkCartQuantity()) {
-      navigate('/placeorder'); // Proceed to checkout if validation passes
-    } else {
-      alert("Please make sure all items in your cart have a quantity of at least 100.");
+    for (const item of cartdata) {
+      if (item.quantity < 100) {
+        alert("Please make sure all items in your cart have a quantity of at least 100.");
+        return;
+      }
     }
+    navigate('/placeorder'); // Proceed to checkout if validation passes
   };
 
   return (
@@ -70,7 +68,6 @@ const Cart = () => {
               <div key={index} className='py-4 border-t border-b text-gray-700 grid grid-cols-[4fr_0.5fr_0.5fr] sm:grid-cols-[4fr_2fr_0.5fr] items-center gap-4'>
                 <div className='flex items-start gap-6'>
                   <img src={`${backendurl}/uploads/${productdata.image[0]}`} className='w-16 sm:w-20' alt="" />
-
                   <div>
                     <p className='text-xs sm:text-lg font-medium'>{productdata.name}</p>
                     <div className='flex items-center gap-5 mt-2'>
@@ -81,14 +78,19 @@ const Cart = () => {
                 </div>
 
                 {/* Handle quantity input */}
-                <input
-                  onChange={(e) => handleQuantityChange(item._id, item.size, e.target.value)}
-                  type="number"
-                  min={100} // Ensure the minimum quantity is 100
-                  step={50} // Set step to 50
-                  defaultValue={item.quantity}
-                  className='border max-w-10 sm:max-w-20 px-1 sm:px-2 py-1'
-                />
+                <div className="flex flex-col items-center">
+                  <input
+                    onChange={(e) => handleQuantityChange(item._id, item.size, e.target.value)}
+                    type="number"
+                    min={100} // Ensure the minimum quantity is 100
+                    step={50} // Set step to 50
+                    defaultValue={item.quantity}
+                    className={`border px-1 sm:px-2 py-1 max-w-10 sm:max-w-20 ${isQuantityLessThan100(item.quantity) ? 'border-red-500 bg-red-50' : ''}`} // Apply red border if quantity < 100
+                  />
+                  {/* Optionally, show the caution message */}
+                  {isQuantityLessThan100(item.quantity) && <p className="text-red-500 text-xs mt-1">Quantity must be at least 100</p>}
+                </div>
+
                 <img onClick={() => updatequantity(item._id, item.size, 0)} src={assets.bin_icon} className='w-4 mr-4 sm:w-5 cursor-pointer' alt="" />
               </div>
             )

@@ -17,7 +17,7 @@ const Footer = () => {
                 <ul className='flex flex-col gap-1 text-gray-600'>
             <li><Link to="/">HOME</Link></li>
             <li><Link to="/about">ABOUT US</Link></li>
-            <li><Link to="/delivery">DELIVERY</Link></li>
+            <li><Link to="/delivery">DELIVERY AND SHIPPING POLICY</Link></li>
             <li><Link to="/privacypolicy">PRIVACY POLICY</Link></li>
             <li><Link to="/terms-and-conditions">TERMS & CONDITIONS</Link></li>
             <li><Link to="/cancellationandrefundpolicy">CANCELLATION/REFUND POLICIES</Link></li>
