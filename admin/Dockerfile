@@ -1,27 +1,31 @@
-# # Step 1: Use a lightweight base image with Nginx
-# FROM nginx:stable-alpine
+# Step 1: Use a lightweight base image with Nginx
+FROM nginx:stable-alpine
 
-# # Step 2: Copy the dist files to the Nginx default static file directory
-# COPY dist/ /usr/share/nginx/html
+# Step 2: Copy the dist files to the Nginx default static file directory
+COPY dist/ /usr/share/nginx/html
 
-# # Step 3: Expose the default Nginx HTTP port
-# EXPOSE 80
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-# # Step 4: Start Nginx when the container starts
-# CMD ["nginx", "-g", "daemon off;"]
+# Step 3: Expose the default Nginx HTTP port
+EXPOSE 80
 
-FROM node:23-alpine3.20
+# Step 4: Start Nginx when the container starts
+CMD ["nginx", "-g", "daemon off;"]
 
-RUN apk add --update npm
+#####################################################################################
 
-WORKDIR /admin
+# FROM node:23-alpine3.20
 
-COPY . .
+# RUN apk add --update npm
 
-# RUN rm -rf node_modules && npm i && npm run build
-RUN rm -rf node_modules && npm i
+# WORKDIR /admin
 
-EXPOSE 5174
+# COPY . .
 
-CMD npm run dev
-# CMD npm run preview
+# # RUN rm -rf node_modules && npm i && npm run build
+# RUN rm -rf node_modules && npm i
+
+# EXPOSE 5174
+
+# CMD npm run dev
+## CMD npm run preview

@@ -1,2 +1,9 @@
-cd admin && npm i && npm run build && cd ..
-cd frontend && npm i && npm run build && cd ..
+pushd admin
+npm i
+npm run build
+popd
+
+pushd frontend 
+npm i 
+npm run build
+popd
