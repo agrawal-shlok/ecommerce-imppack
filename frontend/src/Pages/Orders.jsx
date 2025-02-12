@@ -12,30 +12,33 @@ const Orders = () => {
   const loadorderdata = async () => {
     try {
       if (!token) {
-        return null
+        return null;
       }
-      const response = await axios.post(backendurl + '/api/order/userorders',{},{headers:{token}})
+      const response = await axios.post(backendurl + '/api/order/userorders', {}, { headers: { token } });
+  
       if (response.data.success) {
-        let allordersitem = []
-        response.data.orders.map((order)=>{
-          order.items.map((item) =>{
-            item['status'] = order.status
-            item['payment'] = order.payment
-            item['paymentmethod'] = order.paymentmethod
-            item['date'] = order.date
-            allordersitem.push(item)
-          })
-        })
-
+        let allordersitem = [];
+        response.data.orders.forEach((order) => {
+          order.items.forEach((item) => {
+            item['status'] = order.status;
+            item['payment'] = order.payment;
+            item['paymentmethod'] = order.paymentmethod;
+            item['date'] = order.date;
+  
+            // Only push items where payment is not false or the method is not razorpay
+            if (!(order.payment === false && order.paymentmethod === 'razorpay')) {
+              allordersitem.push(item);
+            }
+          });
+        });
+  
         setOrderdata(allordersitem.reverse());
-        
       }
-        
     } catch (error) {
       console.log(error);
-      
     }
-  }
+  };
+  
 
 
 useEffect(() => {

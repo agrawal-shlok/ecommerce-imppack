@@ -53,6 +53,6 @@ ctrl s -- save
 
 exit namo(ctrl x)
 
-docker compise up 
+docker compose up 
 
 tmux close(ctrl+b then d)

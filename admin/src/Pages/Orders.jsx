@@ -49,15 +49,22 @@ const Orders = ({ token }) => {
     fetchallorders();
   }, [token]);
 
-  // Calculate order statistics
-  const totalOrders = orders.length;
-  const notShippedOrders = orders.filter(
+  // Filter orders before calculating statistics
+  const filteredOrders = orders.filter(
+    (order) => !(order.payment === false && order.paymentmethod === "razorpay")
+  );
+
+  // Calculate order statistics based on filtered orders
+  const totalOrders = filteredOrders.length;
+  const notShippedOrders = filteredOrders.filter(
     (order) =>
       order.status !== "shipped" &&
       order.status !== "out for delivery" &&
       order.status !== "delivered"
   ).length;
-  const shippedOrders = orders.filter((order) => order.status === "shipped").length;
+  const shippedOrders = filteredOrders.filter(
+    (order) => order.status === "shipped"
+  ).length;
 
   return (
     <div>
@@ -81,7 +88,7 @@ const Orders = ({ token }) => {
 
       {/* Orders Listing */}
       <div>
-        {orders.map((order, index) => (
+        {filteredOrders.map((order, index) => (
           <div
             className="grid grid-cols-1 grid-cols-[0.5fr_2fr_1fr] lg:grid-cols-[0.5fr_2fr_1fr_1fr_1fr] gap-3 items-start border-2 border-gray-200 p-5 md:p-8 my-3 md:py-4 text-xs sm:text-sm text-gray-700"
             key={index}
